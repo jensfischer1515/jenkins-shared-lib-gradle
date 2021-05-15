@@ -1,0 +1,56 @@
+plugins {
+    id 'groovy'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
+}
+
+sourceSets {
+    main {
+        groovy {
+            srcDirs = ['src']
+        }
+        resources {
+            srcDirs = ['resources']
+        }
+    }
+
+    test {
+        groovy {
+            srcDirs = ['test']
+        }
+    }
+}
+
+/*
+sourceSets {
+    main.groovy.srcDirs = ['src']
+    main.resources.srcDirs = ['resources']
+}
+ */
+
+dependencies {
+    //implementation 'org.codehaus.groovy:groovy-all:2.5.14'
+    //implementation 'org.codehaus.groovy:groovy:2.4.12'
+    implementation localGroovy()
+
+    implementation 'com.cloudbees:groovy-cps:1.31'
+
+    // https://docs.gradle.org/current/userguide/test_kit.html#sub:test-kit-classpath-injection
+    testImplementation platform("org.spockframework:spock-bom:2.0-M5-groovy-2.5")
+    testImplementation("org.spockframework:spock-core") {
+        exclude group: 'org.codehaus.groovy'
+    }
+    testImplementation('org.junit.jupiter:junit-jupiter-api')
+    //testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    //testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+test {
+    useJUnitPlatform()
+}
