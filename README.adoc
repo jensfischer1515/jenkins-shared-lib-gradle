@@ -54,7 +54,7 @@ The same behavior can be achieved with the help of a https://jenkins.io/doc/book
 _Declarative Pipeline_
 [source,groovy]
 ----
-@Library('gradle-shared-lib') import com.bmuschko.jenkins.Gradle
+@Library('gradle-shared-lib') import org.example.pipeline.Gradle
 
 def gradle = new Gradle(this)
 
@@ -75,7 +75,7 @@ pipeline {
 _Scripted Pipeline_
 [source,groovy]
 ----
-@Library('gradle-shared-lib') import com.bmuschko.jenkins.Gradle
+@Library('gradle-shared-lib') import org.example.pipeline.Gradle
 
 def gradle = new Gradle(this)
 
