@@ -10,6 +10,11 @@ repositories {
     gradlePluginPortal()
 }
 
+compileGroovy {
+    // https://github.com/gradle/gradle/issues/1031#issuecomment-268071822
+    groovyOptions.configurationScript = file("gradle/config.groovy")
+}
+
 sourceSets {
     main {
         groovy {
@@ -38,8 +43,12 @@ dependencies {
     //implementation 'org.codehaus.groovy:groovy-all:2.5.14'
     //implementation 'org.codehaus.groovy:groovy:2.4.12'
     implementation localGroovy()
+    //implementation group: 'org.apache.ivy', name: 'ivy', version: '2.5.0'
+
 
     implementation 'com.cloudbees:groovy-cps:1.31'
+
+    implementation 'org.apache.commons:commons-lang3:3.8.1'
 
     // https://docs.gradle.org/current/userguide/test_kit.html#sub:test-kit-classpath-injection
     testImplementation platform("org.spockframework:spock-bom:2.0-M5-groovy-2.5")
