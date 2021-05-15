@@ -6,6 +6,10 @@ import org.apache.commons.lang3.SystemUtils
 class Gradle implements Serializable {
     def steps
 
+    static def foo(script, args) {
+        script.sh "./gradlew ${args.join(' ')} --console=verbose --info --stacktrace --daemon"
+    }
+
     Gradle(steps) {
         this.steps = steps
     }
